@@ -11,4 +11,9 @@ def get_dominant_eigenvalue_and_eigenvector(data, num_steps):
     """
     ### YOUR CODE HERE
 
-    return 
+    Xn = np.random.rand(data.shape[0])
+    for i in range(num_steps):
+        A_Xn = data.dot(Xn)
+        Xn = A_Xn / np.sqrt(np.sum(A_Xn * A_Xn))
+
+    return float(np.dot(Xn, data.dot(Xn)) / np.dot(Xn, Xn)), Xn
